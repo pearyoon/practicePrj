@@ -10,21 +10,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.kh.appSty06.board.service.BoardService;
 import com.kh.appSty06.board.vo.BoardVo;
-@WebServlet(urlPatterns = "/board/detail")
-public class BoardDetailController extends HttpServlet{
+@WebServlet(urlPatterns = "/board/edit")
+public class BoardEditController extends HttpServlet{
+	private final BoardService bs = new BoardService();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String isEdit = req.getParameter("isEdit");
 		String no = req.getParameter("no");
-		BoardVo vo = new BoardService().selectOne(no,isEdit);
+		String isEdit = req.getParameter("isEdit");
 		
-		if(vo != null) {
-			req.setAttribute("vo", vo);
-			req.getRequestDispatcher("/views/board/detail.jsp").forward(req, resp);
-		} else {
-			req.setAttribute("msg", "게시글 상세 조회 실패");
-			req.getRequestDispatcher("/views/common/errorPage.jsp").forward(req, resp);
+		BoardVo vo = bs.selectOne(no, isEdit);
+		
 
-		}
+		req.setAttribute("vo", vo);
+		req.getRequestDispatcher("/views/board/edit.jsp").forward(req, resp);
+
 	}
 }

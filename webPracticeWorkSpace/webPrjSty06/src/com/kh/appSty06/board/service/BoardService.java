@@ -8,7 +8,7 @@ import com.kh.appSty06.board.vo.BoardVo;
 import static com.kh.appSty06.common.JDBCTemplate.*;
 
 public class BoardService {
-	public BoardDao dao = new BoardDao();
+	private final BoardDao dao = new BoardDao();
 
 	public List<BoardVo> selectAllList() {
 		Connection conn = getConnection();
@@ -19,9 +19,20 @@ public class BoardService {
 		return voList;
 	}
 
-	public BoardVo selectOne(String no) {
+	public BoardVo selectOne(String no ,String isEdit) {
 		Connection conn = getConnection();
-		BoardVo vo = dao.selectOne(no,conn);
+		
+		// 조회수  +1 업데이트 시켜주기
+		int result = dao.updateHit(conn,no);
+		
+		if(result == 1 || "false".equals(isEdit)) {
+			commit(conn);
+			
+		} else {
+			rollback(conn);
+		}
+		
+		BoardVo vo = vo = dao.selectOne(no,conn);
 		
 		close(conn);
 		

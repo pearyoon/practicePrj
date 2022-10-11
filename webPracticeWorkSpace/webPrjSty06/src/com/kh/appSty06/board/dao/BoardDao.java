@@ -92,4 +92,24 @@ public class BoardDao {
 		return vo;
 	}
 
+	public int updateHit(Connection conn, String no) {
+		String sql = "UPDATE BOARD SET HIT = HIT+1 WHERE NO = ?";
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, no);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		
+		return result;
+	}
+
 }

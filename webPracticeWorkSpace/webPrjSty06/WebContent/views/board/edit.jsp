@@ -84,7 +84,10 @@
 					<div>
 						제목 
 					</div>
-					<div><%=vo.getTitle() %></div>
+					<div>
+                        <input type="text" name="title" value="<%=vo.getTitle() %>">    
+                        
+                    </div>
 				</div>
 				<div class="info-area">
 					<div>작성자</div>
@@ -97,15 +100,14 @@
 			</div>
 	
 			<div id="content-area">
-				<div><%=vo.getContent() %></div>
+				<div>
+                    <textarea name="content" id="" cols="30" rows="10">
+                        <%=vo.getContent() %></div>
+                    </textarea>
 			</div>
 			
 			<div id="btn">
-				<a href="/appSty06/board/edit?no=<%=vo.getNo() %>&isEdit=true">수정</a>
-				<span>|</span>
-				<a href="/appSty06/board/delete">삭제</a>
-				<span>|</span>
-				<a href="/appSty06/board/list">목록</a>
+				<a href="/appSty06/board/edit">수정하기</a>
 			</div>
 
 		</div>
