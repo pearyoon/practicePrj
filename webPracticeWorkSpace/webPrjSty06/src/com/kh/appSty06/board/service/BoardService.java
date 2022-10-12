@@ -5,14 +5,16 @@ import java.util.List;
 
 import com.kh.appSty06.board.dao.BoardDao;
 import com.kh.appSty06.board.vo.BoardVo;
+import com.kh.appSty06.common.PageVo;
+
 import static com.kh.appSty06.common.JDBCTemplate.*;
 
 public class BoardService {
 	private final BoardDao dao = new BoardDao();
 
-	public List<BoardVo> selectAllList() {
+	public List<BoardVo> selectAllList(PageVo pv) {
 		Connection conn = getConnection();
-		List<BoardVo> voList = dao.selectAllList(conn);
+		List<BoardVo> voList = dao.selectAllList(conn,pv);
 		
 		close(conn);
 		
@@ -37,6 +39,16 @@ public class BoardService {
 		close(conn);
 		
 		return vo;
+	}
+	// 총 게시글 개수
+	public int selectCount() {
+		Connection conn = getConnection();
+		
+		int result = dao.selectCount(conn);
+		
+		close(conn);
+		
+		return result;
 	}
 
 }

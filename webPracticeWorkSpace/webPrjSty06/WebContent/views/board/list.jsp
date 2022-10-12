@@ -1,9 +1,13 @@
+<%@page import="com.kh.appSty06.common.PageVo"%>
 <%@page import="java.util.List"%>
 <%@page import="com.kh.appSty06.board.vo.BoardVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 	List<BoardVo> voList = (List<BoardVo>)request.getAttribute("voList");
+%>
+<%
+	PageVo pv = (PageVo)request.getAttribute("pv");
 %>
 <!DOCTYPE html>
 <html>
@@ -36,13 +40,13 @@
         border-bottom: 1px solid black;
         border-top: 1px solid black;
     }
-    #btn{
-        position: absolute;
-        width: 60vw;
-        bottom: 20px;
-        left: 0;
-
-        text-align: end;
+    #list-bottom>div:first-child, #list-bottom>#btn>a{
+        width: 80px;
+    }
+    #list-bottom{
+        margin-top: 50px;
+        display: flex;
+        justify-content: space-between;
     }
 </style>
 <title>Insert title here</title>
@@ -76,9 +80,29 @@
            <%} %> 
 
         </div>
-        <div id="btn">
-            <a href="">글쓰기</a>
+        <div id="list-bottom">
+            <div></div>
+            <div id="page">
+       		
+                <%if(pv.getStartPage() != 1) {%>
+                    <a href="/appSty06/board/list?pno=<%=pv.getStartPage()-1 %>" class="btn btn-primary btn-sm">이전</a>
+                <%} %>
+                
+                <% for(int i = pv.getStartPage() ; i <= pv.getEndPage(); ++i){ %>
+                        <a href="/appSty06/board/list?pno=<%=i %>" class="btn btn-primary btn-sm"><%=i %></a>
+                <%} %>
+                   
+                   <% if(pv.getEndPage() != pv.getMaxPage()) {%>
+                        <a href="/appSty06/board/list?pno=<%=pv.getEndPage()+1 %>" class="btn btn-primary btn-sm">다음</a>
+                   <%} %>
+                
+            </div>
+            <div id="btn">
+                <a href="/appSty/board/write" class="btn btn-primary btn-sm">글쓰기</a>
+            </div>
         </div>
+
+
     </main>
   
 </body>

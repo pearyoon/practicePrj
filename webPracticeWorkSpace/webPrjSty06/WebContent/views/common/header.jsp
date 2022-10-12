@@ -9,6 +9,11 @@
 <%
 	MemberVo loginMember = (MemberVo)session.getAttribute("loginMember");
 %>
+<!-- Latest compiled and minified CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Latest compiled JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
 <style>
 
     body, html{
@@ -86,7 +91,7 @@
                 </div>
             </div>
             <div id="menu-bar">
-                <div class="items"><a href="/appSty06/board/list">게시판</a></div>
+                <div class="items"><a href="/appSty06/board/list?pno=1">게시판</a></div>
                 <div class="items">게시판2</div>
                 <div class="items">게시판3</div>
                 <div class="items">게시판4</div>
