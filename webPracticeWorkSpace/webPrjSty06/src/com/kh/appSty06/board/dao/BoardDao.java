@@ -151,4 +151,28 @@ public class BoardDao {
 		return result;
 	}
 
+	public int edit(Connection conn, BoardVo vo) {
+		
+		String sql = "UPDATE BOARD SET TITLE = ? ,CONTENT = ? WHERE NO = ?";
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getTitle());
+			pstmt.setString(2, vo.getContent());
+			pstmt.setString(3, vo.getNo());
+		
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+				
+		
+		return result;
+	}
+
 }

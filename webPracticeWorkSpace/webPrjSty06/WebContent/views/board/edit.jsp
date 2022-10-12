@@ -78,7 +78,7 @@
 </head>
 <body>
 	<%@include file="/views/common/header.jsp" %>
-	<h1>게시글 상세 조회</h1>
+	<h1>게시글 수정하기</h1>
 	<main>
 
 		<div id="detail-wrap">

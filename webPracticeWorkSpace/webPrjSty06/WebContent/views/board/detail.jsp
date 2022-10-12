@@ -105,7 +105,7 @@
 				<span>|</span>
 				<a href="/appSty06/board/delete">삭제</a>
 				<span>|</span>
-				<a href="/appSty06/board/list">목록</a>
+				<a href="/appSty06/board/list?pno=1">목록</a>
 			</div>
 
 		</div>

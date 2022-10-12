@@ -54,4 +54,17 @@ public class BoardService {
 		return result;
 	}
 
+	public int edit(BoardVo vo) {
+		Connection conn = getConnection();
+		
+		int result = dao.edit(conn, vo);
+		
+		if(result == 1) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		return result;
+	}
+
 }
