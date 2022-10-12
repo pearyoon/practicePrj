@@ -21,13 +21,16 @@ public class BoardService {
 		return voList;
 	}
 
-	public BoardVo selectOne(String no ,String isEdit) {
+	public BoardVo selectOne(String no ,boolean isEdit) {
 		Connection conn = getConnection();
 		
-		// 조회수  +1 업데이트 시켜주기
-		int result = dao.updateHit(conn,no);
+		int result = 0;
+
+		if(!isEdit) {
+			result = dao.updateHit(conn,no);
+		};
 		
-		if(result == 1 || "false".equals(isEdit)) {
+		if(result == 1) {
 			commit(conn);
 			
 		} else {

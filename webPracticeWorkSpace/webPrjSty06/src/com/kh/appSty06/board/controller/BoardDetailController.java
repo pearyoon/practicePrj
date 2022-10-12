@@ -14,7 +14,8 @@ import com.kh.appSty06.board.vo.BoardVo;
 public class BoardDetailController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String isEdit = req.getParameter("isEdit");
+		boolean isEdit = false;
+		
 		String no = req.getParameter("no");
 		BoardVo vo = new BoardService().selectOne(no,isEdit);
 		

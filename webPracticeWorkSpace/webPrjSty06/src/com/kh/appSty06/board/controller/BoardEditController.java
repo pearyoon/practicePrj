@@ -15,9 +15,9 @@ public class BoardEditController extends HttpServlet{
 	private final BoardService bs = new BoardService();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String no = req.getParameter("no");
-		String isEdit = req.getParameter("isEdit");
 		
+		String no = req.getParameter("no");
+		boolean isEdit = true;
 		BoardVo vo = bs.selectOne(no, isEdit);
 		
 

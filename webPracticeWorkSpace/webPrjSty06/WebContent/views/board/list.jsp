@@ -66,7 +66,7 @@
             <%if(voList != null) {
             	for(int i = 0; i < voList.size(); i++) {%>
 		            <div>
-                        <a href="/appSty06/board/detail?no=<%= voList.get(i).getNo() %>&isEdit=false" class="list-wrapper">
+                        <a href="/appSty06/board/detail?no=<%= voList.get(i).getNo() %>" class="list-wrapper">
                             <div><%=voList.get(i).getNo() %></div>
                             <div><%=voList.get(i).getWriter() %></div>
                             <div><%=voList.get(i).getTitle() %></div>

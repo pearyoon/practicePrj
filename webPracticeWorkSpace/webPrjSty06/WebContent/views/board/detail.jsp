@@ -101,7 +101,7 @@
 			</div>
 			
 			<div id="btn">
-				<a href="/appSty06/board/edit?no=<%=vo.getNo() %>&isEdit=true">수정</a>
+				<a href="/appSty06/board/edit?no=<%=vo.getNo() %>">수정</a>
 				<span>|</span>
 				<a href="/appSty06/board/delete">삭제</a>
 				<span>|</span>

@@ -28,8 +28,6 @@
 
 	#detail-wrap{
 		height: 100%;
-		display: grid;
-		grid-template-rows: 2fr 5fr 1fr;
 	}
 
 	#title-area{
@@ -60,15 +58,19 @@
 	#content-area{
 		width: 100%;
 		height: 100%;
-		border: 1px solid black;
-	}
-	#content-area>div{
-		padding: 10px;
+		text-align: start;
 	}
 
+	#content-area textarea{
+		width: 100%;
+		height: 100%;
+		border-style: none;
+	}
 	#btn{
-		text-align: end;
-		padding: 10px;
+		text-align: center;
+	}
+	.info-area input{
+		border-style: none;
 	}
 
 </style>
@@ -78,38 +80,38 @@
 	<%@include file="/views/common/header.jsp" %>
 	<h1>게시글 상세 조회</h1>
 	<main>
-		<div id="detail-wrap">
-			<div id="title-area">
-				<div class="info-area">
-					<div>
-						제목 
-					</div>
-					<div>
-                        <input type="text" name="title" value="<%=vo.getTitle() %>">    
-                        
-                    </div>
-				</div>
-				<div class="info-area">
-					<div>작성자</div>
-					<div><%=vo.getWriter() %></div>
-				</div>
-				<div class="info-area">
-					<div>작성일시</div>
-					<div><%=vo.getModifyDate() %></div>
-				</div>
-			</div>
-	
-			<div id="content-area">
-				<div>
-                    <textarea name="content" id="" cols="30" rows="10">
-                        <%=vo.getContent() %></div>
-                    </textarea>
-			</div>
-			
-			<div id="btn">
-				<a href="/appSty06/board/edit">수정하기</a>
-			</div>
 
+		<div id="detail-wrap">
+			<form action="" method="post">
+				<div id="title-area">
+					<div class="info-area">
+						<div>제목 </div>
+						<div>
+							<input type="text" name="title" value="<%=vo.getTitle() %>">    
+						</div>
+					</div>
+					<div class="info-area">
+						<div>작성자</div>
+						<div><%=vo.getWriter() %></div>
+					</div>
+					<div class="info-area">
+						<div>작성일시</div>
+						<div><%=vo.getModifyDate() %></div>
+					</div>
+				</div>
+		
+				<div id="content-area">
+					<div>
+						<textarea name="content" rows="20"><%=vo.getContent() %></textarea>
+					</div>
+				</div>
+				
+				<div id="btn">
+					<input type="submit" value="수정하기" ></a>
+				</div>
+	
+			</form>
+			
 		</div>
 
 	</main>
