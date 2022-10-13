@@ -27,5 +27,15 @@ public class MemberService {
 		
 		return result;
 	}
+
+	public MemberVo login(MemberVo vo) {
+		Connection conn = getConnection();
+		
+		MemberVo loginMember = dao.login(vo, conn);
+		
+		close(conn);
+		
+		return loginMember;
+	}
 	
 }

@@ -19,6 +19,8 @@ public class MemberJoinController extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		
 		String id = req.getParameter("memberId");
 		String pwd = req.getParameter("memberPwd");
 		String nick = req.getParameter("memberNick");
@@ -32,8 +34,8 @@ public class MemberJoinController extends HttpServlet{
 		int result = new MemberService().join(vo);
 		
 		if(result == 1) {
-			req.setAttribute("alretMsg", "회원가입 성공!");
-			req.getRequestDispatcher("/").forward(req, resp);
+			req.getSession().setAttribute("alertMsg", "회원가입성공!");
+			resp.sendRedirect("/appSty07");
 		} else {
 			req.setAttribute("errorMsg", "회원가입 실패~");
 			req.getRequestDispatcher("/views/common/errorPage.jsp").forward(req, resp);

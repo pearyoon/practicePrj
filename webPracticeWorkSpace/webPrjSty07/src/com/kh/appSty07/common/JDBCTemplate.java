@@ -13,9 +13,6 @@ import com.kh.appSty07.common.JDBCTemplate;
 public class JDBCTemplate {
 	
 	public static Connection getConnection() {
-		// 디비 커넥션을 위한 프로포티즈 파일 가져오기
-
-		
 		Connection conn = null;
 		
 		try {
@@ -43,7 +40,7 @@ public class JDBCTemplate {
 	// 트랜잭션처리
 	public static void commit(Connection conn) {
 		try {
-			if(conn != null && conn.isClosed()) {
+			if(conn != null && !conn.isClosed()) {
 				conn.commit();				
 			}
 		} catch (SQLException e) {
@@ -53,7 +50,7 @@ public class JDBCTemplate {
 	
 	public static void rollback(Connection conn) {
 		try {
-			if(conn != null && conn.isClosed()) {
+			if(conn != null && !conn.isClosed()) {
 				conn.rollback();				
 			}
 		} catch (SQLException e) {
@@ -64,7 +61,7 @@ public class JDBCTemplate {
 	// 클로즈
 	public static void close(Connection conn) {
 		try {
-			if(conn != null && conn.isClosed()) {
+			if(conn != null && !conn.isClosed()) {
 				conn.close();				
 			}
 		} catch (SQLException e) {
@@ -74,7 +71,7 @@ public class JDBCTemplate {
 	
 	public static void close(ResultSet rs) {
 		try {
-			if(rs != null && rs.isClosed()) {
+			if(rs != null && !rs.isClosed()) {
 				rs.close();				
 			}
 		} catch (SQLException e) {
@@ -84,7 +81,7 @@ public class JDBCTemplate {
 	
 	public static void close(Statement stmt) {
 		try {
-			if(stmt != null && stmt.isClosed()) {
+			if(stmt != null && !stmt.isClosed()) {
 				stmt.close();				
 			}
 		} catch (SQLException e) {
