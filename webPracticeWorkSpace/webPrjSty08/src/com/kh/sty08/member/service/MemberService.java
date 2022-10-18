@@ -35,5 +35,20 @@ public class MemberService {
 		
 		return loginMember;
 	}
+	public MemberVo edit(MemberVo vo) {
+		
+		Connection conn = getConnection();
+		
+		int result = dao.edit(vo,conn);
+		MemberVo updateMember = null;
+		if(result == 1) {
+			commit(conn);
+			updateMember = dao.selectOne(conn, vo);
+		} else {
+			rollback(conn);
+		}
+		
+		return updateMember;
+	}
 
 }

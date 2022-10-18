@@ -98,7 +98,7 @@
                 
             </div>
             <div id="btn">
-                <a href="/appSty/board/write" class="btn btn-primary btn-sm">글쓰기</a>
+                <a href="/appSty06/board/write" class="btn btn-primary btn-sm">글쓰기</a>
             </div>
         </div>
 

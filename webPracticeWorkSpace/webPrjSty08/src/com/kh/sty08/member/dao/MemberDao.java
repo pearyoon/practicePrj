@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import com.kh.sty08.member.vo.MemberVo;
 
 public class MemberDao {
-
+	// 회원가입
 	public int join(Connection conn, MemberVo vo) {
 		String sql = "INSERT INTO TB_MEMBER ( NO ,ID ,PWD ,NICK ,ADDR ,PHONE ) VALUES ( SEQ_TB_MEMBER_NO.NEXTVAL ,? ,? ,? ,? ,? )";
 		
@@ -36,7 +36,7 @@ public class MemberDao {
 		}
 		return result;
 	}
-
+	// 로그인
 	public MemberVo selectOne(Connection conn, MemberVo vo) {
 		String sql = "SELECT M.NO ,ID ,PWD ,NICK ,ADDR ,PHONE ,ENROLL_DATE ,MODIFY_DATE ,NAME AS GRADE FROM TB_MEMBER M JOIN GRADE G ON M.GRADE = G.NO WHERE STATUS = 'O' AND ID = ? AND PWD = ?";
 		
@@ -84,6 +84,31 @@ public class MemberDao {
 			close(rs);
 		}
 		return loginMember;
+	}
+	// 정보 수정
+	public int edit(MemberVo vo, Connection conn) {
+		String sql = "UPDATE TB_MEMBER SET PWD = ?, NICK = ?, ADDR = ?, PHONE = ? WHERE NO = ? AND ID = ? AND STATUS = 'O'";
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, vo.getPwd());
+			pstmt.setString(2, vo.getNick());
+			pstmt.setString(3, vo.getAddr());
+			pstmt.setString(4, vo.getPhone());
+			pstmt.setString(5, vo.getNo());
+			pstmt.setString(6, vo.getId());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
 	}
 
 }
