@@ -48,5 +48,23 @@ public class MemberService {
 		
 		return voList;
 	}
+
+	public MemberVo modify(MemberVo vo) {
+		Connection conn = getConnection();
+		
+		int result = dao.updateOne(vo,conn);
+		
+		MemberVo updateMember = null;
+		if(result == 1) {
+			commit(conn);
+			updateMember = dao.selectOneByNo(vo, conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return updateMember;
+	}
 	
 }
