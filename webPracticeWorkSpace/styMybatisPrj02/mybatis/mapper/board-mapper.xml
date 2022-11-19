@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board-mapper">
+	<insert id="write">
+		INSERT INTO TB_BOARD
+		(
+		   	NO,
+		    WRITER,
+		    TITLE,
+		    CONTENT,
+		    ENROLL_DATE
+		)
+		VALUES
+		(
+		    SEQ_BOARD_TB_NO.NEXTVAL,
+		    #{writer},
+		    #{title},
+		    #{content},
+		    SYSDATE
+		)
+	</insert>
+	
+	<select id="listAll" resultType="BoardVo">
+			SELECT 
+			    B.NO
+			    ,M.NICK AS WRITER
+			    ,B.TITLE
+			    ,B.CONTENT
+			    ,B.ENROLL_DATE
+			FROM TB_BOARD B
+			JOIN TB_MEMBER M ON M.NO = B.WRITER  
+		<if test="search != null and search != ''">
+			WHERE ${category} LIKE '%${search}%'		
+		</if>    
+	</select>
+</mapper>
