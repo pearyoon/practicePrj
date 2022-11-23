@@ -8,5 +8,14 @@
 </head>
 <body>
 	<h1>회원가입</h1>
+	<form action="/mb03/member/join" method="post">
+		아이디 : <input type="text" name="id">
+		<br>
+		비밀번호 : <input type="password" name="pwd">
+		<br>
+		닉네임 : <input type="text" name="nick">
+		<br>
+		<input type="submit" value="회원가입">
+	</form>
 </body>
 </html>
