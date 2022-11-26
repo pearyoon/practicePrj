@@ -24,4 +24,24 @@
 		WHERE MEMBER_ID = #{memberId} 
 		AND MEMBER_PWD = #{memberPwd}
 	</select>
+	
+	<select id="selectCount" resultType="int">
+		SELECT COUNT(*) FROM MEMBER
+	</select>
+	
+	<select id="selectMemberList" resultType="MemberVo">
+		SELECT MEMBER_ID, MEMBER_NICK
+		FROM MEMBER
+		<if test="keyword != null and keyword != ''">
+			WHERE ${category} LIKE '%${keyword}%'
+		</if>
+	</select>
+
+	<update id="updateMember">
+		UPDATE MEMBER 
+		SET 
+		MEMBER_PWD = #{memberPwd},
+		MEMBER_NICK = #{memberNick}
+		WHERE MEMBER_ID = #{memberId}
+	</update>
 </mapper>

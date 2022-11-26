@@ -43,8 +43,13 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public List<MemberVo> selectMemberList(Map searchMap, PageVo pv) {
-		// TODO Auto-generated method stub
-		return null;
+		SqlSession ss = getSqlSession();
+		
+		List<MemberVo> voList = dao.selectMemberList(ss, searchMap, pv);
+		
+		ss.close();
+		
+		return voList;
 	}
 
 	@Override
@@ -55,14 +60,30 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public int updateMember(MemberVo vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		SqlSession ss = getSqlSession();
+		
+		int result = dao.updateMember(ss, vo);
+		
+		ss.close();
+		
+		return result;
 	}
 
 	@Override
 	public int deleteMember(MemberVo vo) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public int selectCount() {
+		SqlSession ss = getSqlSession();
+		
+		int listCount = dao.selectCount(ss);
+		
+		ss.close();
+		
+		return listCount;
 	}
 
 }

@@ -10,7 +10,7 @@
 <body>
 	<h1>스프링들어가기전연습!</h1>
 	<c:if test="${loginMember.memberNick eq '관리자'}">
-		<a href="/mb03/member/list">회원조회</a>
+		<a href="/mb03/member/list?p=1">회원조회</a>
 		<br>
 	</c:if>
 	<c:if test="${loginMember != null }">

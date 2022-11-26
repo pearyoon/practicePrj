@@ -22,8 +22,10 @@ public interface MemberDao {
 	public MemberVo selectMemberOne(SqlSession ss, int memberNo);
 	
 	// 회원수정
-	public int updateMember(SqlSession ss, int memberNo);
+	public int updateMember(SqlSession ss, MemberVo vo);
 	
 	// 회원탈퇴
-	public int updateMember(SqlSession ss, MemberVo vo);
+	public int deleteMember(SqlSession ss, MemberVo vo);
+
+	public int selectCount(SqlSession ss);
 }

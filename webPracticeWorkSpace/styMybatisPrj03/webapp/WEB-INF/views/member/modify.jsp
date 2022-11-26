@@ -9,7 +9,7 @@
 <body>
 	<h1>내정보</h1>
 	<form action="/mb03/member/modify" method="post">
-		아이디 : <input type="text" name="id" value="${loginMember.memberId }">
+		아이디 : <input type="text" name="id" value="${loginMember.memberId }" readonly="readonly">
 		<br>
 		비밀번호 : <input type="password" name="pwd" value="${loginMember.memberPwd }">
 		<br>

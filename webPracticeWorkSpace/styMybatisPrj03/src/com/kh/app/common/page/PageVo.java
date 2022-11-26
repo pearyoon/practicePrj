@@ -3,13 +3,13 @@ package com.kh.app.common.page;
 public class PageVo {
 	
 	
-	
-	public PageVo(int listCount, int currentPage, int pageLimt, int boardLimit, int maxPage, int startPage,
+
+	public PageVo(int listCount, int currentPage, int pageLimit, int boardLimit, int maxPage, int startPage,
 			int endPage) {
 		super();
 		this.listCount = listCount;
 		this.currentPage = currentPage;
-		this.pageLimt = pageLimt;
+		this.pageLimit = pageLimit;
 		this.boardLimit = boardLimit;
 		this.maxPage = maxPage;
 		this.startPage = startPage;
@@ -21,7 +21,7 @@ public class PageVo {
 	}
 	private int listCount;
 	private int currentPage;
-	private int pageLimt;
+	private int pageLimit;
 	private int boardLimit;
 	
 	private int maxPage;
@@ -39,11 +39,11 @@ public class PageVo {
 	public void setCurrentPage(int currentPage) {
 		this.currentPage = currentPage;
 	}
-	public int getPageLimt() {
-		return pageLimt;
+	public int getPageLimit() {
+		return pageLimit;
 	}
-	public void setPageLimt(int pageLimt) {
-		this.pageLimt = pageLimt;
+	public void setPageLimit(int pageLimit) {
+		this.pageLimit = pageLimit;
 	}
 	public int getBoardLimit() {
 		return boardLimit;
@@ -71,7 +71,7 @@ public class PageVo {
 	}
 	@Override
 	public String toString() {
-		return "PageVo [listCount=" + listCount + ", currentPage=" + currentPage + ", pageLimt=" + pageLimt
+		return "PageVo [listCount=" + listCount + ", currentPage=" + currentPage + ", pageLimit=" + pageLimit
 				+ ", boardLimit=" + boardLimit + ", maxPage=" + maxPage + ", startPage=" + startPage + ", endPage="
 				+ endPage + "]";
 	}

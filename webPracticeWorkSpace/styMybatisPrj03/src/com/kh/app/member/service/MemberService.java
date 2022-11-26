@@ -25,4 +25,7 @@ public interface MemberService {
 	
 	// 회원탈퇴
 	public int deleteMember(MemberVo vo);
+	
+	// 회원 수 조회
+	public int selectCount();
 }
